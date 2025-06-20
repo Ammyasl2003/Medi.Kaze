@@ -1,8 +1,70 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  margin: 0;
   background: #f9f9f9;
+  margin: 0;
+  padding: 0;
 }
+
+h2, h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+form input, form textarea, form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+form button:hover {
+  background: #218838;
+}
+
+.medicine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.medicine-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.medicine-card img {
+  max-width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.medicine-card h3 {
+  margin: 10px 0 5px;
+}
+
 
 header {
   background: #1e88e5;
@@ -20,7 +82,7 @@ nav a {
 main {
   padding: 1rem;
 }
-
+/* 
 .medicine-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -34,7 +96,7 @@ main {
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   text-align: center;
-}
+} */
 
 .btn {
   background: #4caf50;
@@ -79,4 +141,36 @@ main {
   padding: 10px;
   margin: 10px 0;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+@media (max-width: 600px) {
+    form {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .medicine-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .medicine-card {
+        padding: 10px;
+    }
+
+    header, main {
+        padding: 0.5rem;
+    }
+
+    .help-btn {
+        font-size: 16px;
+        padding: 8px 12px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    h2, h3 {
+        font-size: 1.2rem;
+        margin-top: 15px;
+    }
 }

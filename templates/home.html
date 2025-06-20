@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e3f2fd, #fce4ec);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #loader {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #loader::after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      border: 4px solid #2196f3;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-container {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      color: #333;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .title span {
+      color: #e91e63;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #555;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #2196f3;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: background 0.3s ease;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .cta-button:hover {
+      background-color: #1976d2;
+    }
+
+    .medicine-banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin: 40px auto 20px;
+      flex-wrap: wrap;
+      padding: 0 10px;
+    }
+
+    .banner-img {
+      width: 200px;
+      max-width: 80%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .banner-img:hover {
+      transform: scale(1.08);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .title {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .banner-img {
+        width: 120px;
+      }
+
+      .cta-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .banner-img {
+        width: 100px;
+      }
+
+      .title {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loader"></div>
+  <div id="content" style="display:none;">
+
+    <div class="hero-container">
+      <h1 class="title" data-aos="fade-up">Welcome to <span>Medikaze</span></h1>
+
+      <div class="medicine-banner">
+        <img src="{{ url_for('static', filename='uploads/pills.jpeg') }}" alt="Pills" class="banner-img">
+        <img src="{{ url_for('static', filename='uploads/syringe.jpeg') }}" alt="Syringe" class="banner-img">
+        <img src="{{ url_for('static', filename='uploads/medkit.jpeg') }}" alt="Bottle" class="banner-img">
+      </div>
+
+      <p class="subtitle">Your One-Stop Online Pharmacy</p>
+      <a href="{{ url_for('index') }}" class="cta-button">Shop Now</a>
+    </div>
+
+  </div>
+
+  <script>
+    window.addEventListener("load", function() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    });
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+</body>
+</html>

@@ -4,10 +4,12 @@
 <div class="medicine-grid">
   {% for med in medicines %}
     <div class="medicine-card">
+     <img src="{{ med.image if med.image.startswith('http') else url_for('static', filename=med.image) }}" alt="{{ med.name }}">
       <h3>{{ med.name }}</h3>
       <p>₹{{ med.price }}</p>
+      <p>{{ med.description }}</p>
       <p>Stock: {{ med.stock }}</p>
-      <a href="{{ url_for('add_to_cart', med_id=med.id) }}" class="btn">Add to Cart</a>
+      <a href="{{ url_for('add_to_cart', med_id=med._id) }}" class="btn">Add to Cart</a>
     </div>
   {% endfor %}
 </div>

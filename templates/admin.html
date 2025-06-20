@@ -2,20 +2,53 @@
 {% block content %}
 <h2>Admin Panel</h2>
 
+<!-- CSV Upload Form -->
 <form action="/admin" method="POST" enctype="multipart/form-data">
+  <label>Upload Medicines via CSV</label><br>
   <input type="file" name="csv" required>
   <button type="submit" class="btn">Upload CSV</button>
 </form>
 
+<hr>
+
+<!-- Manual Medicine Entry Form -->
+<h2>Add New Medicine (Manual)</h2>
+<form action="/admin" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="manual" value="1">
+  <input type="text" name="name" placeholder="Medicine Name" required>
+  <input type="number" name="price" placeholder="Price" required>
+  <input type="number" name="stock" placeholder="Stock" required>
+  <textarea name="description" placeholder="Description"></textarea>
+  
+  <label>Upload Image (optional)</label>
+  <input type="file" name="image" accept="image/*">
+
+  <label>OR Paste Image URL</label>
+  <input type="text" name="image_url" placeholder="https://...">
+
+  <button type="submit">Add Medicine</button>
+</form>
+
+<form action="/admin/delete-all" method="POST" style="margin-top: 20px;">
+  <button type="submit" class="btn" onclick="return confirm('Are you sure you want to delete ALL medicines?')">🗑️ Remove All Medicines</button>
+</form>
+<hr>
+
+<!-- Medicine Display Section -->
 <h3>All Medicines</h3>
 <div class="medicine-grid">
   {% for med in medicines %}
-    <div class="medicine-card">
-      <h3>{{ med.name }}</h3>
-      <p>₹{{ med.price }}</p>
-      <p>Stock: {{ med.stock }}</p>
-      <a href="{{ url_for('remove', id=med.id) }}" class="btn danger">Delete</a>
-    </div>
+  <div class="medicine-card">
+    <img src="{{ url_for('static', filename=med.image.split('static/')[1]) }}" alt="{{ med.name }}" width="120">
+    <h3>{{ med.name }}</h3>
+    <p>{{ med.description }}</p>
+    <p><strong>₹{{ med.price }}</strong></p>
+    <form action="/add-to-cart/{{ med._id }}" method="POST">
+      <button>Add to Cart</button>
+    </form>
+    <a href="/remove/{{ med._id }}">❌ Remove</a>
+  </div>
   {% endfor %}
 </div>
+
 {% endblock %}
