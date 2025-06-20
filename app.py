@@ -31,11 +31,11 @@ ADMIN_EMAIL = 'a.tech.chd@gmail.com'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-@app.route('/home')
+@app.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/')
+@app.route('/index')
 def index():
     medicines = mongo.db.medicines.find()  # ✅ Store it in a variable
     return render_template('index.html', medicines=medicines)
