@@ -222,4 +222,8 @@ def remove(med_id):
     return redirect('/admin')
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     app.run(debug=True)
+=======
+    app.run(host='0.0.0.0', port=10000)
+>>>>>>> 2ac21e2d6f594d947326109a378e8ede047c2e17
