@@ -8,6 +8,12 @@ django-cors-headers==4.7.0
 djangorestframework==3.16.0
 filelock==3.18.0
 Flask==3.1.0
+Flask
+Flask-Mail
+Flask-PyMongo
+Werkzeug
+pymongo
+dnspython
 Flask-Login==0.6.3
 Flask-SQLAlchemy==3.1.1
 greenlet==3.2.3
